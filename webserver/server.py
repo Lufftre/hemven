@@ -10,7 +10,7 @@ def price_format(price):
     return f'{int(price):,}'.replace(',', ' ')
 
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def index():
     return 'LightNet'
 
@@ -18,7 +18,7 @@ def index():
 @app.route('/prices', methods=['POST'])
 def prices():
     df = pd.DataFrame(request.json)
-    X = df[['floor', 'sqm', 'rent', 'rooms']]
+    X = df[['sqm', 'rent', 'rooms']]
     pred = list(model.predict(X))
     return json.dumps([price_format(p) for p in pred])
 
