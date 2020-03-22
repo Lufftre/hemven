@@ -1,0 +1,17 @@
+{
+	"manifest_version": 2,
+
+	"name": "Hemvenn",
+	"description": "A slutpris hemnet predictor",
+	"version": "1.0",
+	"author": "Ludvig Noring",
+
+	"content_scripts": [
+		{
+			"matches": ["https://www.hemnet.se/bostader?*"],
+			"run_at": "document_end",
+			"css": ["styles.css"],
+			"js": ["main.js"]
+	  }
+	]
+}
