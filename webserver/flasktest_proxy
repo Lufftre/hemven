@@ -1,0 +1,33 @@
+server {
+    server_name lightnet.se;
+
+    location / {
+        try_files $uri @app;
+    }
+
+    location @app {
+    include uwsgi_params;
+    uwsgi_pass unix:/tmp/flasktest.sock;
+}
+
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/lightnet.se/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/lightnet.se/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+}
+
+
+server {
+    if ($host = lightnet.se) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+    listen 80;
+    server_name lightnet.se;
+    return 404; # managed by Certbot
+
+
+}
