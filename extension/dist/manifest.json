@@ -1,7 +1,7 @@
 {
 	"manifest_version": 2,
 
-	"name": "Hemvenn",
+	"name": "Hemven",
 	"description": "A slutpris hemnet predictor",
 	"version": "1.0",
 	"author": "Ludvig Noring",

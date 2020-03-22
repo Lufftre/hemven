@@ -6,3 +6,6 @@ The hemven project consists of
 4. Chrome extensions to get predictions when browsing hemnet.se
 
 ![Example image](example.png)
+
+## Installing Chrome Extension
+![Installation](installation.png)
